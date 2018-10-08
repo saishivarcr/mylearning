@@ -113,3 +113,12 @@ $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 ### Port and Host IP Scanning without NMap/Permissions
 [No Nmap, No Permissions, No Problem](https://www.lanmaster53.com/2010/04/16/no-nmap-no-permissions-no-problem/)
 ## *Nix Commands
+## Kali tools
+### binwalk
+> Binwalk is a tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.
+```bash
+binwalk <img_path>
+
+# extract images recursively
+binwalk -Me <image_path>
+```
