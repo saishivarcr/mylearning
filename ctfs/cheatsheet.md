@@ -123,18 +123,15 @@ $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 ```
 ### Port and Host IP Scanning without NMap/Permissions
 [No Nmap, No Permissions, No Problem](https://www.lanmaster53.com/2010/04/16/no-nmap-no-permissions-no-problem/)
+### Escaping restricted shell
+https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells?slide=2
 ## *Nix Commands
 ### tr
 > tr is an UNIX utility for translating, or deleting, or squeezing repeated characters. It will read from STDIN and write to STDOUT.
 
 https://www.thegeekstuff.com/2012/12/linux-tr-command/
 
-## Escaping restricted shell
-https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells?slide=2
-
 ## Well known vulnerabilities
-### shell shock
-
 ### LFI
 
 https://medium.com/@Aptive/local-file-inclusion-lfi-web-application-penetration-testing-cc9dc8dd3601
@@ -144,4 +141,12 @@ https://highon.coffee/blog/lfi-cheat-sheet/
 vuln.php?page=php://filter/convert.base64-encode/resource=/etc/passwd
 
 
+## Kali tools
+### binwalk
+> Binwalk is a tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images.
+```bash
+binwalk <img_path>
 
+# extract images recursively
+binwalk -Me <image_path>
+```
