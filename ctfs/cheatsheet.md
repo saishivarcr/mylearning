@@ -150,3 +150,8 @@ binwalk <img_path>
 # extract images recursively
 binwalk -Me <image_path>
 ```
+### padBuster
+https://youtu.be/3VxZNflJqsw?t=1385
+
+## Other tools
+
