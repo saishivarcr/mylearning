@@ -56,3 +56,14 @@ wfuzz -c -z file,/usr/share/wfuzz/wordlist/general/common.txt --hc 404 http://19
 
 [WMAP](https://www.offensive-security.com/metasploit-unleashed/wmap-web-scanner/)
 
+# Recon
+## Passive
+### whois
+```bash
+whois crowstrike.com
+```
+### crt.sh
+https://crt.sh
+### Google dorks / google hacking database
+## Active
+

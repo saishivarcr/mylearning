@@ -154,4 +154,7 @@ binwalk -Me <image_path>
 https://youtu.be/3VxZNflJqsw?t=1385
 
 ## Other tools
+### Auditing RPMs and OS packages
+https://vulners.com/audit
+
 
