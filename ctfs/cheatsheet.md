@@ -125,6 +125,11 @@ $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 [No Nmap, No Permissions, No Problem](https://www.lanmaster53.com/2010/04/16/no-nmap-no-permissions-no-problem/)
 ### Escaping restricted shell
 https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted-unix-shells?slide=2
+### Payload collection
+https://github.com/swisskyrepo/PayloadsAllTheThings
+### Bypass system security restrictions
+https://gtfobins.github.io/
+
 ## *Nix Commands
 ### tr
 > tr is an UNIX utility for translating, or deleting, or squeezing repeated characters. It will read from STDIN and write to STDOUT.
