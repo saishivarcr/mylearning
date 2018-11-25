@@ -36,7 +36,7 @@ Scan a website (_-u http://192.168.0.155/_) for directories using a wordlist (_-
 ```bash
 gobuster -e -u http://192.168.0.155/ -w /usr/share/wordlists/dirb/common.txt
 
-gobuster -w /usr/share/wordlist/dirbuster/directory-list-2.3-medium.txt -u http://192.168.172.3 -o gobuster-norm.log
+gobuster -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://192.168.172.3 -o gobuster-norm.log
 ```
 ### Use dirbuster
 > DirBuster is a multi threaded java application designed to brute force directories and files names on web/application servers.
