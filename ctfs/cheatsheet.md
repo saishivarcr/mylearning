@@ -62,6 +62,9 @@ sqlmap --proxy=http://192.168.172.3:31337 --dbms=mysql --data="user=adm&pass=pas
 [Basic Linux Privilege Escalation](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/)
 
 [Offensive Bash Scripts](https://github.com/6odhi/myarsenal/blob/master/README.md)
+
+[Payatu - Priv Esc Guide](https://payatu.com/guide-linux-privilege-escalation/)
+
 ### User part of docker group   
 You land on a computer and `id` shows you're part of the `docker` group. Escalate to root with:
 
