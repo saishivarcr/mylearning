@@ -147,7 +147,19 @@ https://speakerdeck.com/knaps/escape-from-shellcatraz-breaking-out-of-restricted
 https://github.com/swisskyrepo/PayloadsAllTheThings
 ### Bypass system security restrictions
 https://gtfobins.github.io/
-
+### Assessing any(img) files for secrets
+1. exiftool
+```
+# exiftool image.jpg
+```
+1. strings
+```
+# strings image.jpg
+```
+1. binwalk
+```
+# binwalk image.jpg
+```
 ## *Nix Commands
 ### tr
 > tr is an UNIX utility for translating, or deleting, or squeezing repeated characters. It will read from STDIN and write to STDOUT.
