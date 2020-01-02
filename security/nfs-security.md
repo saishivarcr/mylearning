@@ -3,7 +3,7 @@
 ## Securing NFS Server
 Set permissions in `/etc/exports` file for each of the directories made available over the network
 
-Sample Entry:
+Syntax:
 ```bash
 /directory/to/share machine1(option1,option2,...) machine2(...) ...
 ```
